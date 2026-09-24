@@ -67,6 +67,11 @@
     transition: transform 0.15s ease, box-shadow 0.15s ease;
   }
   .topnav .btn-nav:hover { transform: translateY(-1px); box-shadow: 0 4px 14px rgba(212,169,96,0.35); }
+  .nav-toggle { display: none; width: 40px; height: 40px; border: 1px solid rgba(212,169,96,0.35); border-radius: 8px; background: transparent; cursor: pointer; padding: 0; flex-direction: column; align-items: center; justify-content: center; gap: 5px; flex: none; }
+  .nav-toggle span { display: block; width: 18px; height: 2px; background: var(--gold-light); border-radius: 2px; transition: transform 0.2s ease, opacity 0.2s ease; }
+  .topnav.open .nav-toggle span:nth-child(1) { transform: translateY(7px) rotate(45deg); }
+  .topnav.open .nav-toggle span:nth-child(2) { opacity: 0; }
+  .topnav.open .nav-toggle span:nth-child(3) { transform: translateY(-7px) rotate(-45deg); }
   section, header.hero { scroll-margin-top: 62px; }
 
   .btn { display: inline-block; text-decoration: none; font-size: 15px; font-weight: 600; letter-spacing: 0.01em; padding: 13px 28px; border-radius: 6px; transition: transform 0.15s ease, box-shadow 0.15s ease; }
@@ -301,7 +306,12 @@
   footer a:hover { color: var(--gold-light); }
 
   @media (max-width: 860px) {
-    .topnav-links { display: none; }
+    .nav-toggle { display: inline-flex; }
+    .topnav-inner { gap: 10px; }
+    .topnav .btn-nav { padding: 9px 14px; font-size: 13.5px; }
+    .topnav-links { display: none; position: absolute; left: 0; right: 0; top: 100%; flex-direction: column; align-items: stretch; gap: 0; background: rgba(13,17,40,0.97); border-bottom: 1px solid rgba(212,169,96,0.25); padding: 6px 0 10px; }
+    .topnav-links a { font-size: 16px; padding: 12px 24px; border-top: 1px solid rgba(235,235,242,0.06); }
+    .topnav.open .topnav-links { display: flex; }
   }
   @media (max-width: 780px) {
     .gicons { grid-template-columns: 1fr; }
@@ -331,7 +341,7 @@
 <nav class="topnav">
   <div class="wrap topnav-inner">
     <a class="wordmark" href="#top"><span class="dot"></span>ROMAIN CARLIER</a>
-    <div class="topnav-links">
+    <div class="topnav-links" id="navlinks">
       <a href="#constat">Le constat</a>
       <a href="#situations">À quoi ça sert</a>
       <a href="#methode">Mes services</a>
@@ -340,6 +350,7 @@
       <a href="#questions">Questions</a>
     </div>
     <a class="btn-nav" href="#contact">Réserver un échange</a>
+    <button class="nav-toggle" type="button" aria-label="Ouvrir le menu" aria-expanded="false" aria-controls="navlinks"><span></span><span></span><span></span></button>
   </div>
 </nav>
 
@@ -630,5 +641,19 @@
   <div class="wrap">Romain Carlier · <a href="https://www.linkedin.com/in/romain-carlier/" target="_blank" rel="noopener">LinkedIn</a> · <a href="mailto:romain.carlier@hotmail.fr">romain.carlier@hotmail.fr</a> · <a href="#">Mentions légales</a></div>
 </footer>
 
+<script>
+(function () {
+  var nav = document.querySelector('.topnav');
+  var btn = nav.querySelector('.nav-toggle');
+  function setOpen(open) {
+    nav.classList.toggle('open', open);
+    btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    btn.setAttribute('aria-label', open ? 'Fermer le menu' : 'Ouvrir le menu');
+  }
+  btn.addEventListener('click', function () { setOpen(!nav.classList.contains('open')); });
+  nav.querySelectorAll('.topnav-links a').forEach(function (a) { a.addEventListener('click', function () { setOpen(false); }); });
+  document.addEventListener('keydown', function (e) { if (e.key === 'Escape') setOpen(false); });
+})();
+</script>
 </body>
 </html>
