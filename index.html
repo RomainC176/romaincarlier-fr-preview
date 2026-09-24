@@ -217,18 +217,25 @@
   section.dark-accent .price-line { color: var(--muted-on-dark); }
   section.dark-accent .price-line b { color: var(--light-on-dark); }
 
-  /* ---------- Paires situations -> solutions ---------- */
-  .pairs { display: flex; flex-direction: column; gap: 18px; margin-top: 42px; }
-  .pair { display: grid; grid-template-columns: 1fr 44px 1fr; align-items: center; background: #fff; border-radius: 8px; overflow: hidden; }
-  .pain { padding: 22px 24px; font-size: 15.5px; color: var(--ink-soft); border-left: 3px solid rgba(90,94,120,0.35); }
-  .pain b { color: var(--ink); font-weight: 600; }
-  .arrow { display: flex; align-items: center; justify-content: center; }
-  .arrow svg { width: 26px; height: 16px; }
-  .fix { padding: 22px 24px; font-size: 15.5px; background: linear-gradient(160deg, #fffdf9 0%, #fdf8ef 100%); border-left: 1px solid rgba(212,169,96,0.35); }
-  .fix .kind { display: block; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dark-1); margin-bottom: 6px; }
-  .fix b { color: var(--ink); font-weight: 600; }
-  .fix p { color: var(--ink-soft); }
-  .pairs-intro { margin-top: 14px; font-size: 16px; color: var(--ink-soft); max-width: 44em; }
+
+  /* ---------- À quoi ça vous servirait : cartes gains + carte aperçu ---------- */
+  .gicons { display: grid; grid-template-columns: repeat(3, minmax(0,1fr)); gap: 18px; margin-top: 38px; }
+  .gicon { display: inline-flex; width: 44px; height: 44px; border-radius: 10px; align-items: center; justify-content: center; color: var(--gold-dark-1); background: linear-gradient(160deg, #fffdf9 0%, #fbf1e0 100%); border: 1px solid rgba(168,122,53,0.35); }
+  .gicon svg { width: 22px; height: 22px; }
+  .gbox { background: #fff; border-radius: 10px; border: 1px solid rgba(90,94,120,0.14); padding: 22px 22px 24px; }
+  .gbox h3 { margin-top: 16px; font-size: 17px; font-weight: 600; color: var(--ink); line-height: 1.4; letter-spacing: -0.005em; }
+  .gbox p { margin-top: 8px; font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; }
+
+  .gshot { margin-top: 18px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr); gap: 32px; align-items: center; }
+  .gshot-text h3 { margin-top: 16px; font-size: 18px; }
+  .gshot-text p { margin-top: 8px; font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; }
+  .gshot-text .gshot-note { margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.06em; color: var(--gold-dark-1); }
+  .gshot-img img { width: 100%; display: block; border-radius: 6px; border: 1px solid rgba(90,94,120,0.18); box-shadow: 0 12px 30px rgba(13,17,40,0.12); }
+
+  .gshot-bleed { overflow: hidden; align-items: stretch; padding-right: 0; padding-bottom: 0; }
+  .gshot-bleed .gshot-text { padding: 0 0 24px; }
+  .gshot-bleed .gshot-img { position: relative; min-height: 300px; }
+  .gshot-bleed .gshot-img img { position: absolute; left: 0; top: 34px; width: 112%; max-width: none; border-radius: 6px 0 0 0; border-right: none; box-shadow: -8px -8px 30px rgba(13,17,40,0.10); }
   .cta-lead { font-size: 15.5px; color: var(--ink-soft); text-align: center; margin-bottom: -4px; }
   .cta-prompt { font-size: 17px; color: var(--ink); font-weight: 500; margin-bottom: 6px; text-align: center; }
 
@@ -297,9 +304,13 @@
     .topnav-links { display: none; }
   }
   @media (max-width: 780px) {
-    .pair { grid-template-columns: 1fr; }
-    .arrow { padding: 4px 0; transform: rotate(90deg); }
-    .fix { border-left: none; border-top: 1px solid rgba(212,169,96,0.35); }
+    .gicons { grid-template-columns: 1fr; }
+    .gshot { grid-template-columns: 1fr; }
+    .gshot-bleed { padding-right: 22px; padding-bottom: 0; }
+    .gshot-bleed { gap: 6px; }
+    .gshot-bleed .gshot-text { padding-bottom: 8px; }
+    .gshot-bleed .gshot-img { min-height: 210px; margin-right: -22px; }
+    .gshot-bleed .gshot-img img { top: 0; }
     .testimonials { grid-template-columns: 1fr; }
     .mcards { grid-template-columns: 1fr; }
     .journey, .constellation { display: none; }
@@ -322,7 +333,7 @@
     <a class="wordmark" href="#top"><span class="dot"></span>ROMAIN CARLIER</a>
     <div class="topnav-links">
       <a href="#constat">Le constat</a>
-      <a href="#situations">Quand j’interviens</a>
+      <a href="#situations">À quoi ça sert</a>
       <a href="#methode">Mes services</a>
       <a href="#preuve">Preuves</a>
       <a href="#qui">Qui je suis</a>
@@ -383,30 +394,21 @@
     <circle cx="170" cy="90" r="11" fill="#d4a960" opacity="0.15"/>
   </svg>
   <div class="wrap">
-    <span class="eyebrow"><span class="dot"></span>Quand j’interviens</span>
-    <h2>Des situations, et l’outil que je construis avec vous.</h2>
+    <span class="eyebrow"><span class="dot"></span>Et chez vous</span>
+    <h2>À quoi ça vous servirait, chez vous&nbsp;?</h2>
     <div class="sec-rule"></div>
-    <div class="pairs">
-      <div class="pair card-shadow">
-        <p class="pain">Un <b>fichier Excel fait tourner toute l’activité</b> : personne n’ose y toucher, et une erreur de manipulation peut tout fausser.</p>
-        <span class="arrow"><svg viewBox="0 0 26 16"><path d="M0 8 H20 M15 2 L22 8 L15 14" fill="none" stroke="#c2933f" stroke-width="2"/></svg></span>
-        <div class="fix"><span class="kind">Back-office métier</span><p>Vos équipes saisissent au même endroit, les calculs se font tout seuls, et deux personnes peuvent travailler en même temps sans rien casser.</p></div>
-      </div>
-      <div class="pair card-shadow">
-        <p class="pain">Vous portez une <b>idée de produit</b> sans profil technique : impossible d’évaluer les devis des agences, ni de savoir quoi construire en premier.</p>
-        <span class="arrow"><svg viewBox="0 0 26 16"><path d="M0 8 H20 M15 2 L22 8 L15 14" fill="none" stroke="#c2933f" stroke-width="2"/></svg></span>
-        <div class="fix"><span class="kind">Produit SaaS, de zéro</span><p>Un document qui décrit votre produit écran par écran, chiffré, et qui dit par quoi commencer. Puis sa construction, par celui qui l’a écrit.</p></div>
-      </div>
-      <div class="pair card-shadow">
-        <p class="pain"><b>Chaque devis se chiffre à la main</b>, et chacun a sa méthode : c’est long, et personne ne sait vraiment où est la marge.</p>
-        <span class="arrow"><svg viewBox="0 0 26 16"><path d="M0 8 H20 M15 2 L22 8 L15 14" fill="none" stroke="#c2933f" stroke-width="2"/></svg></span>
-        <div class="fix"><span class="kind">Outil de chiffrage</span><p>Vous renseignez les éléments de l’affaire, le devis se calcule selon vos règles, et vous connaissez votre marge avant qu’il parte.</p></div>
-      </div>
-      <div class="pair card-shadow">
-        <p class="pain">Vous <b>payez un logiciel du marché</b>, et une partie du travail se fait quand même à côté, dans des fichiers et des mails : vous payez deux fois.</p>
-        <span class="arrow"><svg viewBox="0 0 26 16"><path d="M0 8 H20 M15 2 L22 8 L15 14" fill="none" stroke="#c2933f" stroke-width="2"/></svg></span>
-        <div class="fix"><span class="kind">Outil métier complémentaire</span><p>Ce qui se fait aujourd’hui dans des fichiers et des mails a son propre écran : vos étapes, vos contrôles, et tout le monde au même endroit.</p></div>
-      </div>
+    <div class="gicons">
+      <div class="gbox card-shadow"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4"/><path d="M12 8v4l3 2"/></svg></span><h3>Une routine qui se fait à la main se fait toute seule.</h3><p>Le relevé du lundi, la relance des impayés, la saisie du soir&nbsp;: l’outil les fait, vous vérifiez.</p></div>
+      <div class="gbox card-shadow"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="10" height="13" rx="1.5"/><path d="M13 9h5.5a1.5 1.5 0 0 1 1.5 1.5V20a1.5 1.5 0 0 1-1.5 1.5H10A1.5 1.5 0 0 1 8.5 20v-3"/><path d="M6 8h4M6 11h4"/></svg></span><h3>Ce qui est saisi une fois n’est plus jamais ressaisi.</h3><p>Le devis devient la commande, la commande devient la facture, sans rien recopier.</p></div>
+      <div class="gbox card-shadow"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20V8"/><path d="M2 20h20"/></svg></span><h3>Vos chiffres sont là quand vous les regardez.</h3><p>Marge par affaire, retards, stock&nbsp;: à jour, sans attendre que quelqu’un vous les sorte.</p></div>
+      <div class="gbox card-shadow"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H18a2 2 0 0 1 2 2v13.5a1.5 1.5 0 0 1-1.5 1.5H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M8 3v17"/><path d="M12 8h5M12 11.5h5M12 15h3"/></svg></span><h3>Ce qui repose sur une seule personne ne dépend plus d’elle.</h3><p>Les règles qu’elle a en tête sont dans l’outil, et l’outil les applique pour tout le monde.</p></div>
+      <div class="gbox card-shadow"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.6"/><path d="M15.5 14.2c2.8.3 5 2.7 5 5.8"/></svg></span><h3>Plusieurs personnes travaillent au même endroit sans se gêner.</h3><p>Fini le fichier qu’une seule personne peut ouvrir à la fois.</p></div>
+      <div class="gbox card-shadow"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l5 5v12a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4.5A1.5 1.5 0 0 1 6.5 3z"/><path d="M14 3v5h5"/><path d="M8.5 12h7M8.5 15.5h7M8.5 19h4"/></svg></span><h3>Ce qui arrive de l’extérieur est lu et rangé.</h3><p>Un devis, une facture, un dossier&nbsp;: lu à l’arrivée, ses informations extraites, l’original conservé.</p></div>
+    </div>
+    <!-- Aperçu : écran 02 des maquettes du cadrage immobilier, données anonymisées. Publication conditionnée à l’accord du client. -->
+    <div class="gbox gshot gshot-bleed card-shadow">
+      <div class="gshot-text"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12s3.5-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.5 6.5-9.5 6.5S2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></span><h3>À quoi ça ressemble, concrètement.</h3><p>Un écran d’un outil que j’ai cadré pour une agence immobilière&nbsp;: les documents d’un bien sont lus à leur dépôt, chaque valeur garde son origine, les écarts entre sources sont signalés.</p><p class="gshot-note">Données anonymisées. Un des dix écrans de la spécification.</p></div>
+      <div class="gshot-img"><img src="assets/maquette-draft-ecran02.png" alt="Écran d’un outil métier : dépôt des documents d’un bien immobilier et résultat d’extraction, chaque valeur avec son origine"></div>
     </div>
     <div class="cta-center">
       <p class="cta-lead">Ce sont des exemples parmi d’autres, et chaque métier a les siens.</p>
