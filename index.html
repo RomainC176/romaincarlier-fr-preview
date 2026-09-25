@@ -21,18 +21,18 @@
 <style>
   /* ==========================================================
      Signature visuelle Romain Carlier (source : brain, décision 2026-05-31, MAJ 2026-09-16)
-     Fonds sombres v2 : #0d1128 / #111634 / #1a2148 · glow indigo 0.26
+     Fonds sombres v3 « bleu électrique » (2026-09-25, retour « trop sombre » puis « mat ») : #1a2266 / #232d80 / #2f3c9e · glow indigo #818cf8 0.38 · glow or 0.16 · muted-on-dark #b4b7cf · cartes services 0.10
      Mode clair : #faf8f4 (#fbf9f5 → #f4efe6), texte #11142e, atténué #5a5e78,
      or foncé sur clair #a87a35 → #c2933f, cartes blanches filet or
      ========================================================== */
   :root {
-    --navy-1: #0d1128; --navy-2: #111634; --navy-3: #1a2148;
+    --navy-1: #1a2266; --navy-2: #232d80; --navy-3: #2f3c9e;
     --indigo: #4f46e5; --indigo-soft: #818cf8;
     --gold: #d4a960; --gold-light: #e8c485;
     --gold-dark-1: #a87a35; --gold-dark-2: #c2933f;
     --ink: #11142e; --ink-soft: #5a5e78;
     --paper: #faf8f4; --paper-1: #fbf9f5; --paper-2: #f4efe6;
-    --light-on-dark: #ebebf2; --muted-on-dark: #a8abc4;
+    --light-on-dark: #ebebf2; --muted-on-dark: #b4b7cf;
   }
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
@@ -88,8 +88,8 @@
   .hero {
     position: relative; overflow: hidden;
     background:
-      radial-gradient(ellipse 55% 80% at 78% 25%, rgba(79,70,229,0.26) 0%, transparent 60%),
-      radial-gradient(ellipse 45% 70% at 92% 75%, rgba(212,169,96,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 80% at 78% 25%, rgba(129,140,248,0.38) 0%, transparent 60%),
+      radial-gradient(ellipse 45% 70% at 92% 75%, rgba(232,196,133,0.16) 0%, transparent 60%),
       linear-gradient(120deg, var(--navy-1) 0%, var(--navy-2) 55%, var(--navy-3) 100%);
     color: var(--light-on-dark);
   }
@@ -101,13 +101,36 @@
   .hero .lede { margin-top: 26px; font-size: clamp(18px, 2.3vw, 23px); color: var(--light-on-dark); font-weight: 500; max-width: 30em; line-height: 1.5; }
   .hero .sub { margin-top: 20px; font-size: 16.5px; color: var(--muted-on-dark); max-width: 32em; }
   .hero .cta-row { margin-top: 42px; }
+  .hero .define { margin-top: 14px; font-size: 16.5px; color: var(--muted-on-dark); max-width: 32em; line-height: 1.55; }
+  .hero .define b { color: var(--light-on-dark); font-weight: 500; }
+  .scope { margin-top: 26px; font-size: clamp(16px, 2vw, 18px); color: var(--ink); max-width: 40em; }
+  .pains { display: grid; grid-template-columns: 1fr 1fr; gap: 22px; margin-top: 32px; }
+  .pcol { background: #fff; border-radius: 10px; border: 1px solid rgba(90,94,120,0.14); padding: 24px 24px 10px; }
+  .pcol.proj { border-color: rgba(194,147,63,0.4); background: linear-gradient(170deg, #fffdf9 0%, #fdf7ec 100%); }
+  .pcol-title { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-dark-1); font-weight: 500; padding-bottom: 14px; border-bottom: 1px solid rgba(90,94,120,0.14); }
+  .pitem { display: grid; grid-template-columns: 44px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid rgba(90,94,120,0.12); align-items: start; }
+  .pitem:last-child { border-bottom: none; }
+  .pitem .gicon { width: 40px; height: 40px; border-radius: 9px; }
+  .pitem .gicon svg { width: 20px; height: 20px; }
+  .pain-t { font-size: 16.5px; font-weight: 600; color: var(--ink); line-height: 1.4; letter-spacing: -0.005em; }
+  .pain-fix { margin-top: 6px; font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; }
+  .ia-strip { margin-top: 22px; display: grid; grid-template-columns: 44px 1fr; gap: 18px; align-items: start; background: #fff; border-radius: 10px; border: 1px solid rgba(90,94,120,0.14); padding: 22px 24px; }
+  .ia-q { font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--gold-dark-1); margin-bottom: 8px; }
+  .ia-title { font-size: clamp(18px, 2.2vw, 22px); font-weight: 500; color: var(--ink); letter-spacing: -0.01em; line-height: 1.35; }
+  .ia-title .gold-dark { background: linear-gradient(135deg, var(--gold-dark-1) 0%, var(--gold-dark-2) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 600; }
+  .ia-text { margin-top: 8px; font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; max-width: 52em; }
+  .ia-text b { color: var(--ink); font-weight: 600; }
+  .converge { margin-top: 34px; text-align: center; font-size: clamp(16px, 2vw, 18px); font-weight: 500; color: var(--ink); max-width: 44em; margin-left: auto; margin-right: auto; }
+  .notfor { margin-top: 12px; text-align: center; font-size: 14px; color: var(--ink-soft); max-width: 44em; margin-left: auto; margin-right: auto; }
+  .price-line .price-sub { display: block; margin-top: 8px; font-weight: 400; font-size: 15px; }
+  .tr-item .tr-fact { display: inline-block; margin-top: 8px; font-family: 'JetBrains Mono', monospace; font-size: 12px; letter-spacing: 0.04em; color: var(--gold-dark-1); }
   .figure { display: flex; flex-direction: column; align-items: center; gap: 16px; }
   .blob {
     width: min(330px, 78%); aspect-ratio: 1;
     border-radius: 50%;
     overflow: hidden; position: relative;
     border: 2px solid rgba(212,169,96,0.55);
-    box-shadow: 0 0 40px rgba(79,70,229,0.35), 0 0 90px rgba(79,70,229,0.15);
+    box-shadow: 0 0 40px rgba(129,140,248,0.45), 0 0 90px rgba(129,140,248,0.20);
   }
   .blob img { width: 100%; height: 100%; object-fit: cover; display: block; }
   .figure .caption { font-family: 'JetBrains Mono', monospace; font-size: 12.5px; letter-spacing: 0.08em; color: var(--muted-on-dark); }
@@ -148,8 +171,8 @@
   section.alt-white { background: #ffffff; }
   section.dark-accent {
     background:
-      radial-gradient(ellipse 55% 80% at 78% 25%, rgba(79,70,229,0.26) 0%, transparent 60%),
-      radial-gradient(ellipse 45% 70% at 92% 75%, rgba(212,169,96,0.12) 0%, transparent 60%),
+      radial-gradient(ellipse 55% 80% at 78% 25%, rgba(129,140,248,0.38) 0%, transparent 60%),
+      radial-gradient(ellipse 45% 70% at 92% 75%, rgba(232,196,133,0.16) 0%, transparent 60%),
       linear-gradient(120deg, var(--navy-1) 0%, var(--navy-2) 55%, var(--navy-3) 100%);
     color: var(--light-on-dark);
   }
@@ -157,14 +180,14 @@
   section.dark-accent h2 { color: var(--light-on-dark); }
   section.dark-accent .sec-rule { background: linear-gradient(90deg, rgba(212,169,96,0.8), rgba(212,169,96,0.05)); }
   section.dark-accent .journey .node { background: #10143a; }
-  section.dark-accent .mcard { background: rgba(235,235,242,0.06); border-left-color: var(--gold); box-shadow: none; border-top: 1px solid rgba(235,235,242,0.08); }
+  section.dark-accent .mcard { background: rgba(235,235,242,0.10); border-left-color: var(--gold); box-shadow: none; border-top: 1px solid rgba(235,235,242,0.14); }
   section.dark-accent .mcard h3 { color: var(--light-on-dark); }
   section.dark-accent .mcard .promesse { color: var(--muted-on-dark); }
   section.dark-accent .mcard .takeaway { color: #d5d7e8; border-top-color: rgba(235,235,242,0.12); }
   section.dark-accent .mcard .num, section.dark-accent .mcard .tag { color: var(--gold-light); }
   section.dark-accent .price-mechanism { background: rgba(235,235,242,0.06); color: var(--muted-on-dark); border-left-color: var(--gold); box-shadow: none; }
   section.dark-accent .price-mechanism strong { color: var(--light-on-dark); }
-  section.dark-accent .micro { color: #8b8da8; }
+  section.dark-accent .micro { color: #9ea1bd; }
   section.dark-accent .about-text p { color: var(--muted-on-dark); }
   section.dark-accent .about-text strong { color: var(--light-on-dark); }
   section.dark-accent .about-text .about-quote { color: var(--light-on-dark); border-left-color: var(--gold); }
@@ -284,7 +307,7 @@
   .faq details p { margin: 0 0 20px; padding: 0 4px; font-size: 15.5px; color: var(--ink-soft); max-width: 62ch; }
 
   /* ---------- Contact ---------- */
-  .contact { position: relative; overflow: hidden; background: radial-gradient(ellipse 50% 90% at 20% 20%, rgba(79,70,229,0.22) 0%, transparent 60%), linear-gradient(120deg, var(--navy-1) 0%, var(--navy-2) 55%, var(--navy-3) 100%); color: var(--light-on-dark); }
+  .contact { position: relative; overflow: hidden; background: radial-gradient(ellipse 50% 90% at 20% 20%, rgba(129,140,248,0.32) 0%, transparent 60%), linear-gradient(120deg, var(--navy-1) 0%, var(--navy-2) 55%, var(--navy-3) 100%); color: var(--light-on-dark); }
   .contact .eyebrow { color: #c6cad9; }
   .contact h2 { color: var(--light-on-dark); }
   .contact .sub { margin-top: 14px; color: var(--muted-on-dark); font-size: 16px; max-width: 38em; }
@@ -301,8 +324,8 @@
   .form textarea { min-height: 110px; resize: vertical; }
   .form .btn { border: none; cursor: pointer; font-family: 'Inter', sans-serif; }
 
-  footer { background: var(--navy-1); color: #8b8da8; font-size: 13px; padding: 22px 0; text-align: center; }
-  footer a { color: #a8abc4; text-decoration: none; }
+  footer { background: var(--navy-1); color: #9ea1bd; font-size: 13px; padding: 22px 0; text-align: center; }
+  footer a { color: var(--muted-on-dark); text-decoration: none; }
   footer a:hover { color: var(--gold-light); }
 
   @media (max-width: 860px) {
@@ -315,6 +338,7 @@
   }
   @media (max-width: 780px) {
     .gicons { grid-template-columns: 1fr; }
+    .pains { grid-template-columns: 1fr; }
     .gshot { grid-template-columns: 1fr; }
     .gshot-bleed { padding-right: 22px; padding-bottom: 0; }
     .gshot-bleed { gap: 6px; }
@@ -343,7 +367,7 @@
     <a class="wordmark" href="#top"><span class="dot"></span>ROMAIN CARLIER</a>
     <div class="topnav-links" id="navlinks">
       <a href="#constat">Le constat</a>
-      <a href="#situations">À quoi ça sert</a>
+      <a href="#situations">Ce que ça change</a>
       <a href="#methode">Mes services</a>
       <a href="#preuve">Preuves</a>
       <a href="#qui">Qui je suis</a>
@@ -363,17 +387,18 @@
       <div class="hero-row">
         <div>
           <p class="lede">Je conçois et construis des outils métier sur mesure, pour les besoins qu’aucun logiciel standard ne couvre.</p>
+          <p class="define">Concrètement&nbsp;: <b>un outil fait pour votre activité</b>, de l’outil qui fait une chose précise au logiciel complet, utilisé tous les jours à la place des fichiers et des logiciels qui n’ont pas été pensés pour vous. Ou le produit que vous voulez lancer, construit de zéro.</p>
           <div class="cta-row">
             <div class="cta-main">
               <!-- TODO : URL Calendly -->
               <a class="btn btn-gold" href="#contact">Réserver un échange (30 min)</a>
-              <p class="micro">Sans engagement. On parle de votre métier, pas de mes services.</p>
+              <p class="micro">Sans engagement. À la fin, vous savez si je suis la bonne personne, et par où commencer.</p>
             </div>
             <span class="alt-link">ou <a href="mailto:romain.carlier@hotmail.fr">écrivez-moi directement</a></span>
           </div>
         </div>
         <div class="figure">
-          <div class="blob"><img src="assets/photo-profil-face.png" alt="Romain Carlier"></div>
+          <div class="blob"><img src="assets/photo-profil-face.png?v=3" alt="Romain Carlier"></div>
           <span class="caption"><b>Romain Carlier</b></span>
         </div>
       </div>
@@ -388,10 +413,9 @@
     <h2>Presque personne ne travaille avec l’outil qu’il lui faudrait.</h2>
     <div class="sec-rule"></div>
     <div class="story">
-      <p class="muted">Quand l’outil adapté manque, on s’arrange. Soit le travail sort du logiciel&nbsp;: un tableur, du papier, la mémoire de celui qui sait faire. Soit c’est le travail qui se plie, et le fonctionnement se tord pour entrer dans un outil qui n’a pas été pensé pour lui. Dans un cas le métier déborde de l’outil, dans l’autre il rétrécit pour y tenir.</p>
-      <p class="muted">Et parfois il n’y a rien à contourner ni à plier&nbsp;: le produit dont votre métier a besoin n’existe tout simplement pas. Ce qui coûte cher, ce n’est pas le mauvais logiciel&nbsp;: c’est l’outil adapté qui manque, et le temps que chacun passe à s’en passer.</p>
-      <p class="muted">Pendant longtemps, la seule alternative était un projet sur mesure à six chiffres, réservé aux grands comptes. Alors on faisait avec.</p>
-      <p class="thesis">Ce n’est plus le cas. Le sur-mesure ne demande plus les moyens d’un grand compte&nbsp;: <span class="gold-dark">il est à la portée d’une PME comme d’un porteur de projet</span>, et l’outil peut enfin se construire autour du métier, au lieu de l’inverse.</p>
+      <p class="thesis">Le sur-mesure ne demande plus les moyens d’un grand compte&nbsp;: <span class="gold-dark">il est à la portée d’une PME comme d’un porteur de projet</span>, et l’outil peut enfin se construire autour du métier, au lieu de l’inverse.</p>
+      <p class="muted">Pourtant, quand l’outil adapté manque, on s’arrange encore. Soit le travail sort du logiciel&nbsp;: un tableur, du papier, la mémoire de celui qui sait faire. Soit c’est le travail qui se plie pour entrer dans un outil qui n’a pas été pensé pour lui. Et parfois, le produit qu’il faudrait n’existe tout simplement pas.</p>
+      <p class="muted">Ce qui coûte cher, ce n’est pas le mauvais logiciel&nbsp;: c’est l’outil adapté qui manque, et le temps que chacun passe à s’en passer. Pendant longtemps, la seule alternative était un projet à six chiffres, réservé aux grands comptes. Alors on faisait avec. Ce n’est plus le cas.</p>
     </div>
   </div>
 </section>
@@ -405,24 +429,41 @@
     <circle cx="170" cy="90" r="11" fill="#d4a960" opacity="0.15"/>
   </svg>
   <div class="wrap">
-    <span class="eyebrow"><span class="dot"></span>Et chez vous</span>
+    <span class="eyebrow"><span class="dot"></span>Ce que ça change</span>
     <h2>À quoi ça vous servirait, chez vous&nbsp;?</h2>
     <div class="sec-rule"></div>
-    <div class="gicons">
-      <div class="gbox card-shadow"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4"/><path d="M12 8v4l3 2"/></svg></span><h3>Une routine qui se fait à la main se fait toute seule.</h3><p>Le relevé du lundi, la relance des impayés, la saisie du soir&nbsp;: l’outil les fait, vous vérifiez.</p></div>
-      <div class="gbox card-shadow"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="10" height="13" rx="1.5"/><path d="M13 9h5.5a1.5 1.5 0 0 1 1.5 1.5V20a1.5 1.5 0 0 1-1.5 1.5H10A1.5 1.5 0 0 1 8.5 20v-3"/><path d="M6 8h4M6 11h4"/></svg></span><h3>Ce qui est saisi une fois n’est plus jamais ressaisi.</h3><p>Le devis devient la commande, la commande devient la facture, sans rien recopier.</p></div>
-      <div class="gbox card-shadow"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20V8"/><path d="M2 20h20"/></svg></span><h3>Vos chiffres sont là quand vous les regardez.</h3><p>Marge par affaire, retards, stock&nbsp;: à jour, sans attendre que quelqu’un vous les sorte.</p></div>
-      <div class="gbox card-shadow"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3H18a2 2 0 0 1 2 2v13.5a1.5 1.5 0 0 1-1.5 1.5H5.5A1.5 1.5 0 0 1 4 18.5z"/><path d="M8 3v17"/><path d="M12 8h5M12 11.5h5M12 15h3"/></svg></span><h3>Ce qui repose sur une seule personne ne dépend plus d’elle.</h3><p>Les règles qu’elle a en tête sont dans l’outil, et l’outil les applique pour tout le monde.</p></div>
-      <div class="gbox card-shadow"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><circle cx="17" cy="9" r="2.6"/><path d="M15.5 14.2c2.8.3 5 2.7 5 5.8"/></svg></span><h3>Plusieurs personnes travaillent au même endroit sans se gêner.</h3><p>Fini le fichier qu’une seule personne peut ouvrir à la fois.</p></div>
-      <div class="gbox card-shadow"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l5 5v12a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4.5A1.5 1.5 0 0 1 6.5 3z"/><path d="M14 3v5h5"/><path d="M8.5 12h7M8.5 15.5h7M8.5 19h4"/></svg></span><h3>Ce qui arrive de l’extérieur est lu et rangé.</h3><p>Un devis, une facture, un dossier&nbsp;: lu à l’arrivée, ses informations extraites, l’original conservé.</p></div>
+    <p class="scope">Parfois, c’est un logiciel complet. Souvent, c’est un outil qui fait une chose précise, et qui la fait tous les jours. Ce qui compte, c’est ce qui coince chez vous.</p>
+    <div class="pains">
+      <div class="pcol ent">
+        <h3 class="pcol-title">Vous dirigez une entreprise</h3>
+        <div class="pitem"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 12a8 8 0 1 1-2.3-5.6"/><path d="M20 4v4h-4"/><path d="M12 8v4l3 2"/></svg></span><div><p class="pain-t">Une tâche que quelqu’un refait à la main chaque semaine.</p><p class="pain-fix">Le relevé du lundi, la relance des impayés, la saisie du soir&nbsp;: un outil les fait, vous vérifiez.</p></div></div>
+        <div class="pitem"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="3" y="4" width="10" height="13" rx="1.5"/><path d="M13 9h5.5a1.5 1.5 0 0 1 1.5 1.5V20a1.5 1.5 0 0 1-1.5 1.5H10A1.5 1.5 0 0 1 8.5 20v-3"/><path d="M6 8h4M6 11h4"/></svg></span><div><p class="pain-t">Le même devis recopié dans trois fichiers.</p><p class="pain-fix">Saisi une fois, il devient la commande, puis la facture. Le fichier que personne n’ose toucher devient un écran que tout le monde peut ouvrir.</p></div></div>
+        <div class="pitem"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 20V10"/><path d="M10 20V4"/><path d="M16 20v-7"/><path d="M22 20V8"/><path d="M2 20h20"/></svg></span><div><p class="pain-t">Vos chiffres, il faut les demander et attendre.</p><p class="pain-fix">Marge par affaire, retards, stock&nbsp;: à jour quand vous les regardez, calculés selon vos règles, pas selon celles d’une seule personne.</p></div></div>
+        <div class="pitem"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 3h8l5 5v12a1.5 1.5 0 0 1-1.5 1.5h-11A1.5 1.5 0 0 1 5 20V4.5A1.5 1.5 0 0 1 6.5 3z"/><path d="M14 3v5h5"/><path d="M8.5 12h7M8.5 15.5h7M8.5 19h4"/></svg></span><div><p class="pain-t">Ce qui arrive par mail, il faut le lire, le trier, le ressaisir.</p><p class="pain-fix">Un devis, une facture, un dossier&nbsp;: lu à l’arrivée, ses informations extraites, l’original conservé.</p></div></div>
+      </div>
+      <div class="pcol proj">
+        <h3 class="pcol-title">Vous portez un produit</h3>
+        <div class="pitem"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 18h6"/><path d="M10 21h4"/><path d="M12 3a6 6 0 0 0-3.5 10.9c.6.5 1 1.3 1 2.1h5c0-.8.4-1.6 1-2.1A6 6 0 0 0 12 3z"/></svg></span><div><p class="pain-t">Une idée de produit, et pas d’équipe technique.</p><p class="pain-fix">Des ateliers pour sortir le produit de votre tête, puis un document qui le décrit écran par écran. Vous savez ce que vous achetez avant de construire.</p></div></div>
+        <div class="pitem"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 4.5A1.5 1.5 0 0 1 5.5 3h13A1.5 1.5 0 0 1 20 4.5v15a1.5 1.5 0 0 1-1.5 1.5h-13A1.5 1.5 0 0 1 4 19.5z"/><path d="M8 8h8M8 12h8M8 16h5"/><path d="M15.5 15.5l1.5 1.5 3-3"/></svg></span><div><p class="pain-t">Impossible d’évaluer les devis des agences.</p><p class="pain-fix">La spécification est chiffrée, et elle vous appartient&nbsp;: vous comparez sur la même base, avec moi ou avec qui vous voulez.</p></div></div>
+        <div class="pitem"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6h4M4 12h10M4 18h16"/><circle cx="19" cy="6" r="2"/><path d="M17 12h3"/></svg></span><div><p class="pain-t">Peur de construire trop, ou la mauvaise chose.</p><p class="pain-fix">Le document dit par quoi commencer, et ce qui peut attendre. On construit la première version, pas le produit final.</p></div></div>
+        <div class="pitem"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="8" r="3.2"/><path d="M3 20c0-3.3 2.7-6 6-6s6 2.7 6 6"/><path d="M16 5l1.5 1.5L21 3"/><path d="M16 12l1.5 1.5L21 10"/></svg></span><div><p class="pain-t">Un premier produit qui tienne, pour le tester avec de vrais utilisateurs.</p><p class="pain-fix">Construit version après version, testé sur vos vraies données, jusqu’à la mise en production.</p></div></div>
+      </div>
     </div>
-    <!-- Aperçu : écran 02 des maquettes du cadrage immobilier, données anonymisées. Publication conditionnée à l’accord du client. -->
+    <div class="ia-strip card-shadow">
+      <span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2 2.2.8-2.2.8L19 21l-.8-2.2-2.2-.8 2.2-.8z"/></svg></span>
+      <div>
+        <p class="ia-q">Et l’IA, dans tout ça&nbsp;?</p>
+        <p class="ia-title">L’IA n’est pas le cœur de l’outil, <span class="gold-dark">elle en est l’accélérateur.</span></p>
+        <p class="ia-text">Elle lit ce qui arrive (un devis, une facture, un contrat) et en sort les informations, retrouve une réponse dans des années de dossiers, répond sur vos chiffres en langage courant. <b>Je ne l’intègre jamais pour dire qu’il y en a</b>&nbsp;: votre outil n’en a pas besoin partout, et parfois pas du tout.</p>
+      </div>
+    </div>
     <div class="gbox gshot gshot-bleed card-shadow">
       <div class="gshot-text"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12s3.5-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.5 6.5-9.5 6.5S2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></span><h3>À quoi ça ressemble, concrètement.</h3><p>Un écran d’un outil que j’ai cadré pour une agence immobilière&nbsp;: les documents d’un bien sont lus à leur dépôt, chaque valeur garde son origine, les écarts entre sources sont signalés.</p><p class="gshot-note">Données anonymisées. Un des dix écrans de la spécification.</p></div>
       <div class="gshot-img"><img src="assets/maquette-draft-ecran02.png" alt="Écran d’un outil métier : dépôt des documents d’un bien immobilier et résultat d’extraction, chaque valeur avec son origine"></div>
     </div>
+    <p class="converge">Dans les deux cas, la même méthode&nbsp;: un outil qui part de votre façon de travailler, une seule personne du besoin au code, et l’IA là où elle accélère.</p>
+    <p class="notfor">Ce n’est pas pour vous si un logiciel du marché vous convient (gardez-le, je vous le dirai), si vous cherchez un site vitrine ou une application grand public, ou si votre projet demande une équipe de dix personnes.</p>
     <div class="cta-center">
-      <p class="cta-lead">Ce sont des exemples parmi d’autres, et chaque métier a les siens.</p>
       <p class="cta-prompt">Vous vous reconnaissez, de près ou de loin ? C’est exactement mon terrain.</p>
       <!-- TODO : URL Calendly -->
       <a class="btn btn-gold" href="#contact">Réserver un échange (30 min)</a>
@@ -484,7 +525,7 @@
         <p class="slot exit">En continu, aussi longtemps que vous le décidez.</p>
       </div>
     </div>
-    <p class="price-line"><b>Tout est au forfait&nbsp;: prix ferme, annoncé avant de commencer.</b></p>
+    <p class="price-line"><b>Tout est au forfait&nbsp;: prix ferme, annoncé avant de commencer.</b><span class="price-sub">Le cadrage a un prix fixe, que je vous donne dès le premier échange, et se compte en semaines. La construction est chiffrée par la spécification, jamais en cours de route.</span></p>
     <div class="cta-center">
       <!-- TODO : URL Calendly -->
       <a class="btn btn-gold" href="#contact">Réserver un échange (30 min)</a>
@@ -492,21 +533,13 @@
   </div>
 </section>
 
-<!-- ================= LIGNE IA ================= -->
-<section class="light section-pad ai-band" id="ia">
-  <div class="wrap">
-    <span class="eyebrow"><span class="dot"></span>Et l’IA&nbsp;?</span>
-    <p class="statement">J’intègre l’IA là où elle sert votre métier. <span class="gold-dark">Pas ailleurs.</span></p>
-    <p class="ai-detail">Il y a des tas de cas d’usage que l’IA révolutionne&nbsp;: lire un devis, une facture ou un contrat qui arrive et en sortir les informations, trier ce qui arrive et l’envoyer au bon endroit, retrouver une réponse dans des années de dossiers, interroger vos chiffres en langage courant sans attendre que quelqu’un vous les sorte, et on pourrait encore en trouver des dizaines.</p>
-    <p class="ai-detail"><b>En revanche, je n’intègre jamais de l’IA pour dire&nbsp;qu’il&nbsp;y&nbsp;en&nbsp;a.</b> Votre outil n’en a pas besoin partout, et parfois pas du tout. Un outil se juge à ce qu’il change dans votre quotidien, pas à la technologie qu’il y a dedans.</p>
-  </div>
-</section>
+<!-- Bande IA autonome retirée (v3) : fondue dans « Ce que ça change » en accélérateur. -->
 
 <!-- ================= PREUVES (cas réels) ================= -->
 <section class="light alt-white section-pad" id="preuve">
   <div class="wrap">
     <span class="eyebrow"><span class="dot"></span>Preuves</span>
-    <h2>Je ne connaissais aucun de ces quatre métiers avant de commencer.</h2>
+    <h2>Quatre métiers que je ne connaissais pas, quatre outils construits avec ceux qui les font.</h2>
     <div class="sec-rule"></div>
     <p class="proof-sub">Le bon outil se dessine à partir du métier&nbsp;: c’est pour ça que je le construis avec ceux qui s’en servent.</p>
     <div class="tr-list">
@@ -514,11 +547,13 @@
         <span class="tr-kind">SaaS immobilier <span class="tr-step">· analysé et cadré, prêt à construire</span></span>
         <p class="tr-head">Trois ateliers, et un porteur de projet qui sait enfin ce qu’il achète.</p>
         <p class="tr-detail">Sa spécification complète&nbsp;: ce que fait l’outil écran par écran, dans quel ordre le construire, ce que ça coûte. Il peut lancer la construction avec qui il veut.</p>
+        <span class="tr-fact">Cinq semaines · trois ateliers · dix écrans maquettés</span>
       </div>
       <div class="tr-item">
         <span class="tr-kind">Mutuelle <span class="tr-step">· construit avec eux, en production depuis plus de deux ans</span></span>
         <p class="tr-head">Plusieurs milliers de contrats par semaine, qui circulent entre cinq applications.</p>
         <p class="tr-detail">Construit avec les gestionnaires, et avec les équipes qui les reçoivent à l’autre bout. Je n’écris plus une ligne dessus&nbsp;: les développeurs que j’ai encadrés le maintiennent.</p>
+        <span class="tr-fact">Une cinquantaine d’utilisateurs · cinq applications reliées · plus de deux ans en production</span>
       </div>
       <div class="tr-item">
         <span class="tr-kind">Fonds d’investissement <span class="tr-step">· cadré avec eux, puis construit</span></span>
@@ -527,7 +562,7 @@
       </div>
       <div class="tr-item">
         <span class="tr-kind">Trading <span class="tr-step">· construit et exploité pendant quatorze mois</span></span>
-        <p class="tr-head">Treize stratégies qui ont tourné seules pendant quatorze mois, avec de l’argent réel.</p>
+        <p class="tr-head">Treize stratégies automatisées, en production pendant quatorze mois.</p>
         <p class="tr-detail">Éprouvées sur l’historique, mises en ligne une à une, surveillées depuis un tableau de bord qui permet de reprendre la main à tout moment.</p>
       </div>
     </div>
@@ -603,7 +638,7 @@
   <div class="wrap">
     <span class="eyebrow"><span class="dot"></span>Contact</span>
     <h2>Parlez-moi de votre métier.</h2>
-    <p class="sub">Un échange de 30 minutes permet déjà d’y voir clair&nbsp;: votre situation, ce qu’un outil sur mesure changerait, et si ça vaut le coup d’aller plus loin.</p>
+    <p class="sub">Un échange de 30 minutes permet déjà d’y voir clair&nbsp;: votre situation, ce qu’un outil sur mesure changerait, et si ça vaut le coup d’aller plus loin. À la fin, vous savez si je suis la bonne personne, et par où commencer. Rien à préparer.</p>
     <div class="contact-grid">
       <div class="contact-left">
         <p>Le plus simple&nbsp;: réservez un créneau directement.</p>
