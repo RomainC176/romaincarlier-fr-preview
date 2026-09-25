@@ -120,6 +120,16 @@
   .ia-title .gold-dark { background: linear-gradient(135deg, var(--gold-dark-1) 0%, var(--gold-dark-2) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; font-weight: 600; }
   .ia-text { margin-top: 8px; font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; max-width: 52em; }
   .ia-text b { color: var(--ink); font-weight: 600; }
+  .apercu-grid { display: grid; grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.6fr); gap: 44px; align-items: start; margin-top: 34px; }
+  .apercu-lede { font-size: 16.5px; color: var(--ink-soft); line-height: 1.6; }
+  .apercu-kinds-title { margin-top: 24px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.1em; text-transform: uppercase; color: var(--gold-dark-1); }
+  .kinds { list-style: none; margin-top: 8px; }
+  .kinds li { font-size: 15px; color: var(--ink); padding: 8px 0 8px 22px; border-bottom: 1px solid rgba(90,94,120,0.14); position: relative; }
+  .kinds li::before { content: ""; position: absolute; left: 2px; top: 15px; width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, var(--gold-light), var(--gold)); box-shadow: 0 0 8px rgba(212,169,96,0.7); }
+  .kinds li:last-child { border-bottom: none; }
+  .apercu-shot { margin: 0; }
+  .apercu-shot img { width: 100%; display: block; border-radius: 8px; border: 1px solid rgba(90,94,120,0.2); box-shadow: 0 18px 44px rgba(13,17,40,0.16); }
+  .apercu-shot figcaption { margin-top: 10px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.06em; color: var(--gold-dark-1); }
   .converge { margin-top: 34px; text-align: center; font-size: clamp(16px, 2vw, 18px); font-weight: 500; color: var(--ink); max-width: 44em; margin-left: auto; margin-right: auto; }
   .notfor { margin-top: 12px; text-align: center; font-size: 14px; color: var(--ink-soft); max-width: 44em; margin-left: auto; margin-right: auto; }
   .price-line .price-sub { display: block; margin-top: 8px; font-weight: 400; font-size: 15px; }
@@ -254,16 +264,7 @@
   .gbox h3 { margin-top: 16px; font-size: 17px; font-weight: 600; color: var(--ink); line-height: 1.4; letter-spacing: -0.005em; }
   .gbox p { margin-top: 8px; font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; }
 
-  .gshot { margin-top: 18px; display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.55fr); gap: 32px; align-items: center; }
-  .gshot-text h3 { margin-top: 16px; font-size: 18px; }
-  .gshot-text p { margin-top: 8px; font-size: 14.5px; color: var(--ink-soft); line-height: 1.6; }
-  .gshot-text .gshot-note { margin-top: 12px; font-family: 'JetBrains Mono', monospace; font-size: 11.5px; letter-spacing: 0.06em; color: var(--gold-dark-1); }
-  .gshot-img img { width: 100%; display: block; border-radius: 6px; border: 1px solid rgba(90,94,120,0.18); box-shadow: 0 12px 30px rgba(13,17,40,0.12); }
 
-  .gshot-bleed { overflow: hidden; align-items: stretch; padding-right: 0; padding-bottom: 0; }
-  .gshot-bleed .gshot-text { padding: 0 0 24px; }
-  .gshot-bleed .gshot-img { position: relative; min-height: 300px; }
-  .gshot-bleed .gshot-img img { position: absolute; left: 0; top: 34px; width: 112%; max-width: none; border-radius: 6px 0 0 0; border-right: none; box-shadow: -8px -8px 30px rgba(13,17,40,0.10); }
   .cta-lead { font-size: 15.5px; color: var(--ink-soft); text-align: center; margin-bottom: -4px; }
   .cta-prompt { font-size: 17px; color: var(--ink); font-weight: 500; margin-bottom: 6px; text-align: center; }
 
@@ -339,12 +340,7 @@
   @media (max-width: 780px) {
     .gicons { grid-template-columns: 1fr; }
     .pains { grid-template-columns: 1fr; }
-    .gshot { grid-template-columns: 1fr; }
-    .gshot-bleed { padding-right: 22px; padding-bottom: 0; }
-    .gshot-bleed { gap: 6px; }
-    .gshot-bleed .gshot-text { padding-bottom: 8px; }
-    .gshot-bleed .gshot-img { min-height: 210px; margin-right: -22px; }
-    .gshot-bleed .gshot-img img { top: 0; }
+    .apercu-grid { grid-template-columns: 1fr; gap: 26px; }
     .testimonials { grid-template-columns: 1fr; }
     .mcards { grid-template-columns: 1fr; }
     .journey, .constellation { display: none; }
@@ -369,6 +365,7 @@
       <a href="#constat">Le constat</a>
       <a href="#situations">Ce que ça change</a>
       <a href="#methode">Mes services</a>
+      <a href="#apercu">À quoi ça ressemble</a>
       <a href="#preuve">Preuves</a>
       <a href="#qui">Qui je suis</a>
       <a href="#questions">Questions</a>
@@ -399,7 +396,7 @@
         </div>
         <div class="figure">
           <div class="blob"><img src="assets/photo-profil-face.png?v=3" alt="Romain Carlier"></div>
-          <span class="caption"><b>Romain Carlier</b></span>
+          <span class="caption"><b>Romain Carlier</b> · indépendant depuis 2021</span>
         </div>
       </div>
     </div>
@@ -457,11 +454,7 @@
         <p class="ia-text">Elle lit ce qui arrive (un devis, une facture, un contrat) et en sort les informations, retrouve une réponse dans des années de dossiers, répond sur vos chiffres en langage courant. <b>Je ne l’intègre jamais pour dire qu’il y en a</b>&nbsp;: votre outil n’en a pas besoin partout, et parfois pas du tout.</p>
       </div>
     </div>
-    <div class="gbox gshot gshot-bleed card-shadow">
-      <div class="gshot-text"><span class="gicon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2.5 12s3.5-6.5 9.5-6.5 9.5 6.5 9.5 6.5-3.5 6.5-9.5 6.5S2.5 12 2.5 12z"/><circle cx="12" cy="12" r="3"/></svg></span><h3>À quoi ça ressemble, concrètement.</h3><p>Un écran d’un outil que j’ai cadré pour une agence immobilière&nbsp;: les documents d’un bien sont lus à leur dépôt, chaque valeur garde son origine, les écarts entre sources sont signalés.</p><p class="gshot-note">Données anonymisées. Un des dix écrans de la spécification.</p></div>
-      <div class="gshot-img"><img src="assets/maquette-draft-ecran02.png" alt="Écran d’un outil métier : dépôt des documents d’un bien immobilier et résultat d’extraction, chaque valeur avec son origine"></div>
-    </div>
-    <p class="converge">Dans les deux cas, la même méthode&nbsp;: un outil qui part de votre façon de travailler, une seule personne du besoin au code, et l’IA là où elle accélère.</p>
+    <p class="converge">Dans les deux cas, la même méthode&nbsp;: un outil qui part de votre façon de travailler, et l’IA là où elle accélère.</p>
     <p class="notfor">Ce n’est pas pour vous si un logiciel du marché vous convient (gardez-le, je vous le dirai), si vous cherchez un site vitrine ou une application grand public, ou si votre projet demande une équipe de dix personnes.</p>
     <div class="cta-center">
       <p class="cta-prompt">Vous vous reconnaissez, de près ou de loin ? C’est exactement mon terrain.</p>
@@ -533,10 +526,36 @@
   </div>
 </section>
 
-<!-- Bande IA autonome retirée (v3) : fondue dans « Ce que ça change » en accélérateur. -->
+<!-- ================= À QUOI ÇA RESSEMBLE ================= -->
+<section class="light alt-white section-pad" id="apercu">
+  <div class="wrap">
+    <span class="eyebrow"><span class="dot"></span>À quoi ça ressemble</span>
+    <h2>Un outil métier, concrètement.</h2>
+    <div class="sec-rule"></div>
+    <div class="apercu-grid">
+      <div>
+        <p class="apercu-lede">Un écran d’un outil que j’ai cadré pour une agence immobilière&nbsp;: les documents d’un bien sont lus à leur dépôt, chaque valeur garde son origine, les écarts entre sources sont signalés. Pas de tableau de bord décoratif&nbsp;: un écran de travail, avec les mots du métier dedans.</p>
+        <p class="apercu-kinds-title">Ce que ça peut être, selon ce qui coince</p>
+        <ul class="kinds">
+          <li>Un back-office métier</li>
+          <li>Un outil de chiffrage</li>
+          <li>Un tableau de bord</li>
+          <li>Un outil à côté du logiciel que vous avez déjà</li>
+          <li>Un produit, construit de zéro</li>
+        </ul>
+      </div>
+      <!-- Écran 02 des maquettes du cadrage immobilier, données anonymisées. Publication conditionnée à l’accord du client ; remplaçable par tout autre écran montrable. -->
+      <figure class="apercu-shot">
+        <img src="assets/maquette-draft-ecran02.png" alt="Écran d’un outil métier : dépôt des documents d’un bien immobilier et résultat d’extraction, chaque valeur avec son origine">
+        <figcaption>Données anonymisées. Un des dix écrans de la spécification.</figcaption>
+      </figure>
+    </div>
+  </div>
+</section>
+
 
 <!-- ================= PREUVES (cas réels) ================= -->
-<section class="light alt-white section-pad" id="preuve">
+<section class="light section-pad" id="preuve">
   <div class="wrap">
     <span class="eyebrow"><span class="dot"></span>Preuves</span>
     <h2>Quatre métiers que je ne connaissais pas, quatre outils construits avec ceux qui les font.</h2>
@@ -638,7 +657,7 @@
   <div class="wrap">
     <span class="eyebrow"><span class="dot"></span>Contact</span>
     <h2>Parlez-moi de votre métier.</h2>
-    <p class="sub">Un échange de 30 minutes permet déjà d’y voir clair&nbsp;: votre situation, ce qu’un outil sur mesure changerait, et si ça vaut le coup d’aller plus loin. À la fin, vous savez si je suis la bonne personne, et par où commencer. Rien à préparer.</p>
+    <p class="sub">Un échange de 30 minutes permet déjà d’y voir clair&nbsp;: votre situation, ce qu’un outil sur mesure changerait, et si ça vaut le coup d’aller plus loin. Rien à préparer.</p>
     <div class="contact-grid">
       <div class="contact-left">
         <p>Le plus simple&nbsp;: réservez un créneau directement.</p>
